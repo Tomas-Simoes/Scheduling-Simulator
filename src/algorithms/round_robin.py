@@ -24,4 +24,7 @@ class RoundRobin(Algorithm):
         if process in self.ready_queue:
             self.ready_queue.remove(process)
         return 1
+
+    def process_preemption(self, process: Process, reason: str) -> None:
+        print(f"Process preempted  {process} due to {reason}")
             

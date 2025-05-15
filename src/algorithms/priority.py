@@ -41,3 +41,5 @@ class PriorityPreemptive(Algorithm):
         if process in self.ready_queue:
             self.ready_queue.remove(process)
         return 1
+    
+

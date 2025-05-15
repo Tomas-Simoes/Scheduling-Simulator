@@ -8,7 +8,7 @@ class Process:
         self.priority = priority
         self.period = period
         randomDeadline = random.randint(25, 175)
-        self.deadline = arrivalTime + randomDeadline
+        self.deadline = arrivalTime + period
         self.remaining_time = burstTime
         self.time_in_current_quantum = 0
         self.waitingTime = 0

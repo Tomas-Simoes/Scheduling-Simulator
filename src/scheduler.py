@@ -81,7 +81,6 @@ class SchedulerWorker(QObject):
                 preempted_process = self.currentProcess
                 preempted_process.time_in_current_quantum = 0 
                 self.currentProcess = None
-                self.algorithm.process_preemption(preempted_process, "quantum")
                 self.algorithm.ready_queue.append(preempted_process)
                 self._checkScheduling()
                 
@@ -91,21 +90,18 @@ class SchedulerWorker(QObject):
                 preempted_process = self.currentProcess
                 self.currentProcess = None 
                 self.algorithm.ready_queue.append(preempted_process)
-                self.algorithm.process_preemption(preempted_process, "priority")
                 self._checkScheduling()
                 
             elif rateMonotonic:
                 preempted_process = self.currentProcess
                 self.currentProcess = None 
                 self.algorithm.ready_queue.append(preempted_process)
-                self.algorithm.process_preemption(preempted_process, "period priority")
                 self._checkScheduling()
                 
             elif earliestDeadlineFirst:
                 preempted_process = self.currentProcess
                 self.currentProcess = None 
                 self.algorithm.ready_queue.append(preempted_process)
-                self.algorithm.process_preemption(preempted_process, "earlier deadline")
                 self._checkScheduling()
                 
         else:
